@@ -1,0 +1,36 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+type Todo {
+  id: ID!
+  text: String!
+  done: Boolean!
+  user: User!
+  priority: Priority!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  todos: [Todo!]!
+}
+
+input NewTodo {
+  text: String!
+  userId: String!
+  priority: Priority!
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+}
